@@ -1,25 +1,17 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>El Buen Sabor</span>
-    <span *ngIf="user"> Hola {{ user.displayName | uppercase }}! </span>
+    <span>Restaurant - El Buen Sabor</span>
+    <span *ngIf="user"> Bienvenido/a {{ user.displayName }} </span>
     <span>
       <span class="user-account-icon">
-        <mat-icon *ngIf="user" [routerLink]="'/account'">account_box</mat-icon>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <mat-icon *ngIf="user" [routerLink]="'/account'" matTooltip="Perfil">account_box</mat-icon>
       </span>
       <span *ngIf="user">
-        <mat-icon
-          matTooltip="Cerrar Sesion"
-          aria-label="Logout"
-          (click)="logOut()"
-          style="cursor: pointer"
-          >logout
-        </mat-icon>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <mat-icon matTooltip="Cerrar Sesion" aria-label="Logout" (click)="logOut()" style="cursor: pointer">logout</mat-icon>
       </span>
-      <span *ngIf="!user">
-        <button mat-button matTooltip="Iniciar Sesion" (click)="logIn()">
-          Iniciar Sesion
-        </button>
-      </span>
+      
     </span>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -26,6 +26,10 @@ const routes: Routes = [
     component: LogInComponent
   },
   {
+    path: "globalHome",
+    component: HomeComponent
+  },
+  {
     path: "admin",
     component: AdminComponent,
     canActivate: [AuthGuardService],
@@ -67,6 +71,10 @@ const routes: Routes = [
       {
         path: "users",
         component: ListUserComponent
+      },
+      {
+        path: "home",
+        component: HomeComponent
       }
     ]
   },
@@ -91,7 +99,7 @@ const routes: Routes = [
   {
     path: "logInGlobal",
     component: LogInComponent
-    }
+  }
 ];
 
 @NgModule({

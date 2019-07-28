@@ -30,9 +30,7 @@ export class NavbarHomeComponent implements OnInit {
       width: "450%"
     });
     dialogRef.afterClosed().subscribe(data => {
-      console.log(data);
-      //Si uso otros providers enviar a crear usuario ;
-    });
+      console.log(data); });
   }
 
   logOut() {

@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+
 import { Router } from "@angular/router";
-import { MatDialog } from "@angular/material";
+import { MatDialog} from '@angular/material';
+import { CommonLoginComponent } from "../../../LogIn-LogOut/components/common-login/common-login.component";
+
+
 
 @Component({
   selector: 'app-log-in',
@@ -9,23 +13,19 @@ import { MatDialog } from "@angular/material";
 })
 export class LogInComponent implements OnInit {
 
-  username: string;
-  password: string;
-
-  constructor(private router: Router) { }
+  constructor( public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
-  login(): void {
-    if (this.username === "cliente" && this.password === "cliente") {
-      this.router.navigate(["menu"]);
-    } else {
-      alert("Invalid credentials");
-    }
-  }
-  registrar(): void {
-    this.router.navigate(['crearusuario']);
+  singin() {
+    const dialogRef = this.dialog.open(CommonLoginComponent, {
+      width: "450%"
+    });
+    dialogRef.afterClosed().subscribe(data => {
+      console.log(data);
+      // Si uso otros providers enviar a crear usuario ;
+    });
   }
 
 }

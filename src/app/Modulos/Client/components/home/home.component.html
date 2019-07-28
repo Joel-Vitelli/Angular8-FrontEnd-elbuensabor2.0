@@ -5,22 +5,15 @@
     <div class="container">
       <form [formGroup]="form">
         <mat-form-field>
-          <input
-            matInput
-            placeholder="Buscar un producto aquí!"
-            formControlName="filterControl"
-          />
+          <input matInput placeholder="Escriba el nombre de un producto a buscar" formControlName="filterControl"/>
         </mat-form-field>
       </form>
     </div>
 
     <!-- Articulos manofacturados -->
-    <div>Nuestros Articulos</div>
+    <div class="nuestArticulosVenta">Lista de Articulos a la venta</div>
 
-    <div
-      class="products"
-      *ngIf="filteredManofacturado | async as manofacturados"
-    >
+    <div class="products" *ngIf="filteredManofacturado | async as manofacturados">
       <div class="card" *ngFor="let manofacturado of manofacturados">
         <mat-card class="cardCol">
           <p class="card-title">{{ manofacturado.nombre }}</p>
@@ -43,14 +36,14 @@
             color="primary"
             (click)="addToPedido(manofacturado, 'articulomanofacturado')"
           >
-            Agregar!
+            Agregar al pedido
           </button>
         </mat-card>
       </div>
     </div>
 
-    <!-- Articulos comunes -->
-    <div>Extras</div>
+    <!-- Articulos de afuera -->
+    <div class="nuestArticulosVenta">Agregados diversos</div>
     <div class="products" *ngIf="filteredArt | async as articulos">
       <div class="card" *ngFor="let art of articulos">
         <mat-card class="cardCol">
@@ -62,7 +55,7 @@
             color="primary"
             (click)="addToPedido(art, 'articulo')"
           >
-            Agregar !
+            Agregar al pedido
           </button>
         </mat-card>
       </div>
@@ -71,7 +64,7 @@
 
   <div class="pedido">
     <div class="title">
-      <h4>Acá podes ver tu pedido</h4>
+      <h4>Ver pedido</h4>
     </div>
     <div class="list">
       <!-- Headers -->

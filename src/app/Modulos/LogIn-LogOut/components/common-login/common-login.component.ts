@@ -6,6 +6,7 @@ import { AuthService } from "../../../Shared/services/auth/auth.service";
 import { SnackBarService } from "../../../Shared/services/snack-bar/snack-bar.service";
 import { ClienteService } from "../../../Admin/services/cliente/cliente.service";
 import { Cliente } from "../../../Admin/interfaces/cliente";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,6 +26,8 @@ export class CommonLoginComponent implements OnInit {
     private clienteService: ClienteService,
     private fb: FormBuilder,
     public dialogRef: MatDialogRef<CommonLoginComponent>,
+    private router: Router,
+    private auth: AuthService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -57,6 +60,10 @@ export class CommonLoginComponent implements OnInit {
     this.isLogin = value === "signIn" ? true : false;
   }
 
+  regresar(): void {
+    this.dialogRef.close({ type: "signUp" });
+  }
+
   login() {
     this.authService
       .emailLogin(
@@ -66,8 +73,9 @@ export class CommonLoginComponent implements OnInit {
       .then(u => {
         if (u) {
           this.snackBarService.openSnackBar(
-            "Bienvenido nuevamente " + u.displayName + " :)"
+            "Bienvenido  " + u.displayName
           );
+          this.router.navigate(["globalHome"]);
           this.dialogRef.close({ type: "signIn" });
         }
       });

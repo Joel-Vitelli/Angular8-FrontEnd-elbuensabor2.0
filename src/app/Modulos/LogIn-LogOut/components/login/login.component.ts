@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   passwordFormGroup: FormGroup;
 
   constructor(
-    private _formBuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private auth: AuthService,
     private router: Router,
     private userService: UsersService,
@@ -25,10 +25,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.emailFormGroup = this._formBuilder.group({
+    this.emailFormGroup = this.formBuilder.group({
       emailControl: ["", [Validators.required, Validators.email]]
     });
-    this.passwordFormGroup = this._formBuilder.group({
+    this.passwordFormGroup = this.formBuilder.group({
       passwordControl: ["", [Validators.minLength(6)]]
     });
   }

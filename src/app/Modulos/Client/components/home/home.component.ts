@@ -192,7 +192,7 @@ export class HomeComponent implements OnInit {
 
   doPedido() {
     if (this.listDetallePedido.length === 0) {
-      this.snackBarService.openSnackBar("¡Debes agregar algun articulo!");
+      this.snackBarService.openSnackBar("Agrega articulos antes de hacer pedido");
     } else {
       this.getHorario();
     }
@@ -208,7 +208,7 @@ export class HomeComponent implements OnInit {
           this.compareHorarioApertura(data[0]);
         } else {
           this.snackBarService.openSnackBar(
-            "Hubo un error, intenta nuevamente"
+            "Error, reintente mas tarde"
           );
         }
       })
@@ -254,7 +254,7 @@ export class HomeComponent implements OnInit {
 
     if (now > horaCompare) {
       this.snackBarService.openSnackBar(
-        "Tarde! Ya cerramos, revisa nuestros horarios. Tendras que pedir para mañana! :("
+        "En estos momentos no brindamos atención, por favor, hazlo en los horarios habiles. Gracias."
       );
       return;
     }
@@ -278,7 +278,7 @@ export class HomeComponent implements OnInit {
 
       this.confirmDialog
         .getConfirmation(
-          "El pedido se estará enviando a las " +
+          "El pedido se terminara y enviara a las " +
           time
             .getHours()
             .toString()
@@ -288,7 +288,7 @@ export class HomeComponent implements OnInit {
             .getMinutes()
             .toString()
             .padStart(2, "0") +
-          " ¿Confirmamos?"
+          " Confirmar"
         )
         .then((confirmarion: boolean) => {
           if (confirmarion) {
@@ -330,13 +330,13 @@ export class HomeComponent implements OnInit {
         .addPedido(pedido)
         .toPromise()
         .then(data => {
-          this.snackBarService.openSnackBar("Listo! prepararemos tu pedido :D");
+          this.snackBarService.openSnackBar("Pedido completo");
           this.router.navigate(["/account"]);
           this.clearInfo();
         })
         .catch(err => {
           this.snackBarService.openSnackBar(
-            "Ocurrio un error, intentalo de nuevo!"
+            "Ha ocurrido un error, por favor, intente nuevamente"
           );
           console.log(err);
         });
@@ -359,13 +359,13 @@ export class HomeComponent implements OnInit {
         .then((c: Cliente) => {
           if (!c && this.toAdressCheck) {
             this.snackBarService.openSnackBar(
-              "Completa tus datos para saber a donde enviar el pedido!"
+              "Complete sus datos"
             );
             return false;
           }
           if (c.domicilio.calle.length === 0) {
             this.snackBarService.openSnackBar(
-              "Debes cargar tu domicilio antes de hacer el pedido, sino puedes venir al local!"
+              "Ingrese domicilio, o retire en local"
             );
             return false;
           }
@@ -379,7 +379,6 @@ export class HomeComponent implements OnInit {
   }
 }
 
-//0 retiro local - 1 domicilio
 export enum deliveryType {
   "true" = 0,
   "false" = 1

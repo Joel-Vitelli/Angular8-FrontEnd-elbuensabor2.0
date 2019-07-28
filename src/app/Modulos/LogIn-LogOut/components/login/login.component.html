@@ -2,7 +2,7 @@
   <mat-vertical-stepper [linear]="true" #stepper>
     <mat-step [stepControl]="emailFormGroup">
       <form [formGroup]="emailFormGroup">
-        <ng-template matStepLabel>Ingresa tu email :)</ng-template>
+        <ng-template matStepLabel>Ingrese su correo electronico</ng-template>
         <mat-form-field>
           <input
             matInput
@@ -18,20 +18,20 @@
     </mat-step>
     <mat-step [stepControl]="passwordFormGroup">
       <form [formGroup]="passwordFormGroup">
-        <ng-template matStepLabel>Ingresa tu contraseña</ng-template>
+        <ng-template matStepLabel>Ingrese su contraseña</ng-template>
         <mat-form-field>
           <input
             matInput
-            placeholder="Password"
+            placeholder="Contraseña"
             formControlName="passwordControl"
             type="password"
             required
           />
         </mat-form-field>
         <div>
-          <button mat-button (click)="login()">Entrar</button>
-          <button mat-button matStepperPrevious>Atras</button>
-          <button mat-button (click)="stepper.reset()">Limpiar</button>
+          <button mat-button (click)="login()">Ingresar</button>
+          <button mat-button matStepperPrevious>Regresar</button>
+          <button mat-button (click)="stepper.reset()">Limpiar formulario</button>
         </div>
       </form>
     </mat-step>

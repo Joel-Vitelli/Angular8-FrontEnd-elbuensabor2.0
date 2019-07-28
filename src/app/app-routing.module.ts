@@ -18,11 +18,12 @@ import { ArticuloCounterComponent } from "./Modulos/Admin/components/articulo-co
 import { PedidosComponent } from "./Modulos/Admin/components/pedidos/pedidos.component";
 import { ClientesComponent } from "./Modulos/Admin/components/clientes/clientes.component";
 import { ListUserComponent } from "./Modulos/Admin/components/users/list/list-user.component";
+import { LogInComponent } from "./Modulos/LogIn-LogOut/components/log-in/log-in.component";
 
 const routes: Routes = [
   {
     path: "",
-    component: HomeComponent
+    component: LogInComponent
   },
   {
     path: "admin",
@@ -86,7 +87,11 @@ const routes: Routes = [
     path: "account",
     component: AccountComponent,
     canActivate: [AuthGuardService]
-  }
+  },
+  {
+    path: "logInGlobal",
+    component: LogInComponent
+    }
 ];
 
 @NgModule({

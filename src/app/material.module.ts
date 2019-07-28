@@ -1,4 +1,6 @@
 import { NgModule } from "@angular/core";
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatListModule} from '@angular/material/list';
 // tslint:disable-next-line:max-line-length
 import {
   MatToolbarModule,
@@ -9,14 +11,12 @@ import {
   MatInputModule,
   MatMenuModule,
   MatTabsModule,
-  MatListModule,
   MatTableModule,
   MatPaginatorModule,
   MatSortModule,
   MatDialogModule,
   MatAutocompleteModule,
   MatCheckboxModule,
-  MatSnackBarModule,
   MatDividerModule,
   MatTooltipModule,
   MatButtonToggleModule,
@@ -24,7 +24,9 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatSlideToggleModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule,
 } from "@angular/material";
 
 @NgModule({
@@ -53,7 +55,9 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule,
+    MatProgressSpinnerModule
   ],
   // tslint:disable-next-line:max-line-length
   exports: [
@@ -80,7 +84,9 @@ import {
     MatDatepickerModule,
     MatNativeDateModule,
     MatSlideToggleModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule,
+    MatProgressSpinnerModule
   ]
 })
 export class MaterialModule {}

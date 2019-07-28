@@ -1,0 +1,42 @@
+/*Estilos del card*/
+.card{
+    flex-flow: row wrap;
+    width: 20%;
+    height: 45%;
+    margin: 10px auto;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .card-content {
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+  }
+  .header{
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+  }
+  .button{
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .main-div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: row wrap;
+  }
+  .card-title{
+    font-size: 60px;
+    flex-flow: row wrap;
+  }
+  

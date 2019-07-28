@@ -40,7 +40,9 @@ import { NavbarHomeComponent } from "./Modulos/Client/components/navbar-home/nav
 import { AmountDialogComponent } from "./Modulos/Client/components/home/amount-dialog/amount-dialog.component";
 import { HourDialogComponent } from "./Modulos/Client/components/home/hour-dialog/hour-dialog.component";
 import { UsersComponent } from "./Modulos/Admin/components/users/users.component";
-
+import { ParticlesComponent } from "./Modulos/Particles/particles/particles.component";
+import { ParticlesModule } from 'angular-particle';
+import { LogInComponent } from "./Modulos/LogIn-LogOut/components/log-in/log-in.component";
 
 
 
@@ -73,8 +75,10 @@ import { UsersComponent } from "./Modulos/Admin/components/users/users.component
     PedidosComponent,
     ClientesComponent,
     UsersComponent,
-    ListUserComponent
-  ],
+    ListUserComponent,
+    ParticlesComponent,
+    LogInComponent
+],
   entryComponents: [
     ArticuloDialogComponent,
     SnackBarComponent,
@@ -93,7 +97,8 @@ import { UsersComponent } from "./Modulos/Admin/components/users/users.component
     AngularFireAuthModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ParticlesModule
   ],
   providers: [AuthService, { provide: MAT_DATE_LOCALE, useValue: "es" }],
   bootstrap: [AppComponent]

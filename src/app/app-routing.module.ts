@@ -1,0 +1,96 @@
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+
+import { HomeComponent } from "./Modulos/Client/components/home/home.component";
+import { AdminComponent } from "./Modulos/Admin/components/admin/admin.component";
+import { LoginComponent } from "./Modulos/LogIn-LogOut/components/login/login.component";
+import { AuthGuardService } from "./Modulos/Admin/services/guards/auth-guard.service";
+import { CocinaComponent } from "./Modulos/Cocina/components/cocina/cocina.component";
+import { ArticuloComponent } from "./Modulos/Admin/components/articulo/articulo.component";
+import { RubroArticuloComponent } from "./Modulos/Admin/components/rubro-articulo/rubro-articulo.component";
+import { ArticuloManofacturadoComponent } from "./Modulos/Admin/components/articulo-manofacturado/articulo-manofacturado.component";
+import { HorarioComponent } from "./Modulos/Admin/components/horario/horario.component";
+import { CommonLoginComponent } from "./Modulos/LogIn-LogOut/components/common-login/common-login.component";
+import { AccountComponent } from "./Modulos/Client/components/account/account.component";
+import { PedidosSinFacturaComponent } from "./Modulos/Admin/components/pedidos/pedidos-sin-factura/pedidos-sin-factura.component";
+import { FacturasComponent } from "./Modulos/Admin/components/facturas/facturas.component";
+import { ArticuloCounterComponent } from "./Modulos/Admin/components/articulo-counter/articulo-counter.component";
+import { PedidosComponent } from "./Modulos/Admin/components/pedidos/pedidos.component";
+import { ClientesComponent } from "./Modulos/Admin/components/clientes/clientes.component";
+import { ListUserComponent } from "./Modulos/Admin/components/users/list/list-user.component";
+
+const routes: Routes = [
+  {
+    path: "",
+    component: HomeComponent
+  },
+  {
+    path: "admin",
+    component: AdminComponent,
+    canActivate: [AuthGuardService],
+    children: [
+      {
+        path: "",
+        component: PedidosSinFacturaComponent
+      },
+      {
+        path: "articulo",
+        component: ArticuloComponent
+      },
+      { path: "rubro", component: RubroArticuloComponent },
+      {
+        path: "manofacturado",
+        component: ArticuloManofacturadoComponent
+      },
+      {
+        path: "horario",
+        component: HorarioComponent
+      },
+      {
+        path: "pedidosxfacturar",
+        component: PedidosSinFacturaComponent
+      },
+      {
+        path: "facturas",
+        component: FacturasComponent
+      },
+      {
+        path: "totalsales",
+        component: ArticuloCounterComponent
+      },
+      {
+        path: "pedidos",
+        component: PedidosComponent
+      },
+      { path: "clientes", component: ClientesComponent },
+      {
+        path: "users",
+        component: ListUserComponent
+      }
+    ]
+  },
+  {
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: "cocina",
+    component: CocinaComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "client-login",
+    component: CommonLoginComponent
+  },
+  {
+    path: "account",
+    component: AccountComponent,
+    canActivate: [AuthGuardService]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}

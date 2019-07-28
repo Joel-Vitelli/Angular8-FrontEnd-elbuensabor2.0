@@ -1,0 +1,36 @@
+<div class="container">
+  <h4 *ngIf="listPedido.length === 0">No hay pedidos</h4>
+  <div class="pedidos" *ngFor="let pedido of listPedido">
+    <mat-card>
+      <div class="title">Numero: {{ pedido.numero }}</div>
+      <mat-card-content>
+        <div class="descripcion">
+          <span
+            >Hora pedido : {{ pedido.fecha | date: "dd/MM/yy, hh:mm " }}</span
+          >
+          <span>Tipo Retiro {{ tipoRetiro[pedido.tipoEnvio] }}</span>
+          <span
+            >Hora estimada: {{ pedido.horaEstimadaFin | date: "hh:mm" }}</span
+          >
+          <div class="details">
+            <div *ngFor="let d of pedido.detalles">
+              {{ d.cantidad }} X
+              {{
+                d.onModel === "articulo"
+                  ? d.articulo.denominacion
+                  : d.articulo.nombre
+              }}
+            </div>
+          </div>
+          <button
+            mat-button
+            color="primary"
+            (click)="updatePedido(pedido)"
+          >
+            Listo!
+          </button>          
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

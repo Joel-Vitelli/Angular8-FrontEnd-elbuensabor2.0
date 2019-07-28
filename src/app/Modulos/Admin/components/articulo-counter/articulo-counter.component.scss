@@ -1,0 +1,32 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.item {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cant {
+  width: 75px;
+  padding-right: 10px;
+  text-align: center;
+}
+
+.description {
+  display: flex;
+  justify-content: center;
+}
+
+.export-to-excel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

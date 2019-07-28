@@ -1,0 +1,143 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span style="cursor: pointer" [routerLink]="['/']">El Buen Sabor</span>
+    <span *ngIf="user">
+      <mat-icon
+        matTooltip="Cerrar Sesion"
+        aria-label="Logout"
+        (click)="logOut()"
+        style="cursor: pointer"
+        >logout
+      </mat-icon>
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="container">
+  <div class="client-data" *ngIf="user">
+    <app-cliente *ngIf="cliente" [cliente]="cliente"></app-cliente>
+  </div>
+  <div>
+    <div class="title">
+      Pedidos de hoy :D
+      <mat-icon style="cursor: pointer" (click)="getPedidoByClient()"
+        >update</mat-icon
+      >
+    </div>
+  </div>
+  <div class="pedidos-container">
+    <div class="pedidos" *ngFor="let pedido of fromToday">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Pedido Nro : {{ pedido.numero }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Hora estimada entrega:
+            {{ pedido.horaEstimadaFin | date: "shortTime" }}
+          </p>
+          <p>Estado de Pedido: {{ estadoPedido[pedido.estado] }}</p>
+          <p>Entrega : {{ tipoRetiro[pedido.tipoEnvio] }}</p>
+          <div
+            class="list-item detail-item"
+            *ngFor="let detalle of pedido.detalles"
+          >
+            <p class="description">
+              {{ detalle.cantidad }} X
+              {{
+                detalle.onModel === "articulo"
+                  ? detalle.articulo.denominacion
+                  : detalle.articulo.nombre
+              }}
+            </p>
+            <p class="description">${{ detalle.subtotal | number: ".2" }}</p>
+          </div>
+          <div *ngIf="pedido.tipoEnvio === 0" class="list-item detail-item">
+            <p class="description">
+              Desc. retiro en local
+            </p>
+            <p class="description">
+              ${{ (getTotal(pedido.detalles) * 10) / 100 | number: ".0" }}
+            </p>
+          </div>
+          <div class="list-item detail-item">
+            <p class="description total">
+              <strong>Total</strong>
+            </p>
+            <p class="description total">
+              <strong>
+                ${{
+                  (pedido.tipoEnvio !== 0
+                    ? getTotal(pedido.detalles)
+                    : getTotal(pedido.detalles) -
+                      (getTotal(pedido.detalles) * 10) / 100) | number: ".0"
+                }}
+              </strong>
+            </p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div class="olds">
+    <div class="title">
+      Todos los Pedidos
+    </div>
+    <div class="all">
+      <div class="pedidos" *ngFor="let p of getOlds()">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>Pedido Nro : {{ p.numero }}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              Hora estimada entrega:
+              {{ p.horaEstimadaFin | date: "shortTime" }}
+            </p>
+            <p>Estado de Pedido: {{ estadoPedido[p.estado] }}</p>
+            <p>Entrega : {{ tipoRetiro[p.tipoEnvio] }}</p>
+            <div
+              class="list-item detail-item"
+              *ngFor="let detalle of p.detalles"
+            >
+              <p class="description">
+                {{ detalle.cantidad }} X
+                {{
+                  detalle.onModel === "articulo"
+                    ? detalle.articulo.denominacion
+                    : detalle.articulo.nombre
+                }}
+              </p>
+              <p class="description">${{ detalle.subtotal | number: ".2" }}</p>
+            </div>
+            <div *ngIf="p.tipoEnvio === 0" class="list-item detail-item">
+              <p class="description">
+                <strong>Total</strong>
+              </p>
+              <p class="description">
+                <strong>
+                  ${{ (getTotal(p.detalles) * 10) / 100 | number: ".0" }}
+                </strong>
+              </p>
+            </div>
+            <div class="list-item detail-item">
+              <p class="description total">
+                <strong>Total</strong>
+              </p>
+              <p class="description total">
+                <strong>
+                  ${{
+                    (p.tipoEnvio === 0
+                      ? getTotal(p.detalles)
+                      : (getTotal(p.detalles) * 10) / 100) | number: ".0"
+                  }}
+                </strong>
+              </p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

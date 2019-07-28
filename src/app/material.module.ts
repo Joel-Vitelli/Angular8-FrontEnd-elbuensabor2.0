@@ -1,0 +1,86 @@
+import { NgModule } from "@angular/core";
+// tslint:disable-next-line:max-line-length
+import {
+  MatToolbarModule,
+  MatIconModule,
+  MatButtonModule,
+  MatStepperModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatMenuModule,
+  MatTabsModule,
+  MatListModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatDialogModule,
+  MatAutocompleteModule,
+  MatCheckboxModule,
+  MatSnackBarModule,
+  MatDividerModule,
+  MatTooltipModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSlideToggleModule,
+  MatExpansionModule
+} from "@angular/material";
+
+@NgModule({
+  // tslint:disable-next-line:max-line-length
+  imports: [
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
+    MatDividerModule,
+    MatTooltipModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    MatExpansionModule
+  ],
+  // tslint:disable-next-line:max-line-length
+  exports: [
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatListModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
+    MatAutocompleteModule,
+    MatCheckboxModule,
+    MatSnackBarModule,
+    MatDividerModule,
+    MatTooltipModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    MatExpansionModule
+  ]
+})
+export class MaterialModule {}

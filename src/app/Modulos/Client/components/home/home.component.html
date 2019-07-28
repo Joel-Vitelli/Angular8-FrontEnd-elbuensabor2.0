@@ -1,0 +1,143 @@
+<app-navbar-home></app-navbar-home>
+
+<div class="general-container">
+  <div class="select-articulos">
+    <div class="container">
+      <form [formGroup]="form">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Buscar un producto aquí!"
+            formControlName="filterControl"
+          />
+        </mat-form-field>
+      </form>
+    </div>
+
+    <!-- Articulos manofacturados -->
+    <div>Nuestros Articulos</div>
+
+    <div
+      class="products"
+      *ngIf="filteredManofacturado | async as manofacturados"
+    >
+      <div class="card" *ngFor="let manofacturado of manofacturados">
+        <mat-card class="cardCol">
+          <p class="card-title">{{ manofacturado.nombre }}</p>
+          <p class="card-description" *ngIf="manofacturado.detalle">
+            <mat-list>
+              <mat-list-item *ngFor="let detalle of manofacturado.detalle">
+                <span>
+                  {{ detalle.cantidad }}
+                  {{ detalle.articulo.unidadMedidad }}
+                </span>
+                <span>
+                  {{ detalle.articulo.denominacion }}
+                </span>
+              </mat-list-item>
+            </mat-list>
+          </p>
+          <p class="card-price">Precio: {{ manofacturado.precio }}</p>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="addToPedido(manofacturado, 'articulomanofacturado')"
+          >
+            Agregar!
+          </button>
+        </mat-card>
+      </div>
+    </div>
+
+    <!-- Articulos comunes -->
+    <div>Extras</div>
+    <div class="products" *ngIf="filteredArt | async as articulos">
+      <div class="card" *ngFor="let art of articulos">
+        <mat-card class="cardCol">
+          <p class="card-title">{{ art.denominacion }}</p>
+          <p class="card-description"></p>
+          <p class="card-price">Precio: {{ art.precioVenta }}</p>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="addToPedido(art, 'articulo')"
+          >
+            Agregar !
+          </button>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="pedido">
+    <div class="title">
+      <h4>Acá podes ver tu pedido</h4>
+    </div>
+    <div class="list">
+      <!-- Headers -->
+      <div class="list-item">
+        <p class="product-header">Artículo</p>
+        <p class="amount-header">Monto</p>
+      </div>
+      <mat-divider></mat-divider>
+
+      <!-- Iteracion de detalles -->
+      <div
+        class="list-item detail-item"
+        *ngFor="let det of listDetallePedido; let i = index"
+      >
+        <p class="description">
+          <mat-icon class="cancel-icon" (click)="deleteDetallePedido(i)"
+            >cancel</mat-icon
+          >
+          {{ det.cantidad }} X
+          {{
+            det.onModel === "articulo"
+              ? det.articulo.denominacion
+              : det.articulo.nombre
+          }}
+        </p>
+        <p class="description">
+          {{ det.subtotal | number: ".2" }}
+        </p>
+      </div>
+
+      <!-- Retiro en local -->
+      <div *ngIf="toAdressCheck" class="list-item">
+        <p class="description">
+          Desc. retiro en local
+        </p>
+        <p class="description">
+          ${{ (totalPedido * 10) / 100 | number: "0.2" }}
+        </p>
+      </div>
+
+      <!-- Suma total -->
+      <div class="list-item">
+        <p class="description-total">
+          <strong> Total </strong>
+        </p>
+        <p class="description-total">
+          ${{
+            toAdressCheck === true
+              ? (totalPedido - (totalPedido * 10) / 100 | number: "0.2")
+              : totalPedido
+          }}
+        </p>
+      </div>
+    </div>
+    <div class="discount">
+      <mat-checkbox [(ngModel)]="toAdressCheck"
+        >Retiro en local :D (10% de descuento)
+      </mat-checkbox>
+    </div>
+    <div class="btn-finish">
+      <button mat-raised-button *ngIf="user" (click)="doPedido()">
+        Hacer Pedido!
+      </button>
+      <button mat-button disabled *ngIf="!user">
+        Debes estar logueado para hacer el pedido
+      </button>
+    </div>
+  </div>
+</div>

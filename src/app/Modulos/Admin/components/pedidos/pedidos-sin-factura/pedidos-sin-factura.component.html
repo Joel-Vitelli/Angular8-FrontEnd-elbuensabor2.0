@@ -1,0 +1,51 @@
+<div class="container">
+  <h4 *ngIf="listPedido.length === 0">No hay pedidos Para facturar</h4>
+  <div class="pedidos" *ngFor="let pedido of listPedido">
+    <mat-card>
+      <div class="title">Numero: {{ pedido.numero }}</div>
+      <mat-card-content>
+        <div class="descripcion">
+          <span
+            >Hora pedido : {{ pedido.fecha | date: "dd/MM/yy, hh:mm " }}</span
+          >
+          <span>Tipo Retiro {{ tipoRetiro[pedido.tipoEnvio] }}</span>
+          <span
+            >Hora estimada: {{ pedido.horaEstimadaFin | date: "hh:mm" }}</span
+          >
+          <div class="details">
+            <div class="spacer" *ngFor="let d of pedido.detalles">
+              <div>
+                {{ d.cantidad }} X
+                {{
+                  d.onModel === "articulo"
+                    ? d.articulo.denominacion
+                    : d.articulo.nombre
+                }}
+              </div>
+              <div>${{ d.subtotal }}</div>
+            </div>
+            <div *ngIf="pedido.tipoEnvio === 0" class="spacer">
+              <div>
+                Descuento
+              </div>
+              <div>
+                ${{ (getTotal(pedido.detalles) * 10) / 100 | number: "0.2" }}
+              </div>
+            </div>
+            <div *ngIf="pedido.tipoEnvio === 0" class="spacer">
+              <div>Total</div>
+              <div>${{ getTotal(pedido.detalles) | number: "0.2" }}</div>
+            </div>
+          </div>
+          <button
+            mat-button
+            color="primary"
+            (click)="createFacturaFromPedido(pedido)"
+          >
+            ¡Generar factura!
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

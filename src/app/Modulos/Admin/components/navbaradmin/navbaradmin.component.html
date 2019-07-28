@@ -1,0 +1,57 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="toobar-spacer"></span>
+    <mat-icon
+      class="material-icon"
+      aria-hidden="false"
+      matTooltip="Cerrar Sesion"
+      style="cursor: pointer"
+      (click)="signOut()"
+      >logout</mat-icon
+    >
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item [matMenuTriggerFor]="articulos">Articulos</button>
+  <button mat-menu-item [routerLink]="['/admin/users']">
+    Users
+  </button>
+  <button mat-menu-item [routerLink]="['/admin/rubro']">
+    Administrar Rubros
+  </button>
+  <button mat-menu-item [routerLink]="['/admin/horario']">
+    Horario de apertura
+  </button>
+  <button mat-menu-item [matMenuTriggerFor]="pedidos">Pedidos</button>
+  <button mat-menu-item [routerLink]="['/admin/facturas']">
+    Facturas
+  </button>
+  <button mat-menu-item [routerLink]="['/admin/totalsales']">
+    Artículos más vendidos
+  </button>
+  <button mat-menu-item [routerLink]="['/admin/clientes']">
+    Clientes
+  </button>
+  <button mat-menu-item [routerLink]="['/cocina']">
+    Cocina
+  </button>
+</mat-menu>
+
+<mat-menu #articulos="matMenu">
+  <button mat-menu-item [routerLink]="['/admin/articulo']">Articulos</button>
+  <button mat-menu-item [routerLink]="['/admin/manofacturado']">
+    Productos manofacturados
+  </button>
+</mat-menu>
+<mat-menu #pedidos="matMenu">
+  <button mat-menu-item [routerLink]="['/admin/pedidosxfacturar']">
+    Pedidos para facturar
+  </button>
+  <button mat-menu-item [routerLink]="['/admin/pedidos']">
+    Pedidos
+  </button>
+</mat-menu>

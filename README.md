@@ -1,9 +1,9 @@
-# ElBuenSabor
+# Restaurant - El Buen Sabor
 
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
-Run npm install at root path, and npm install at ./server/ folder.
+Run npm install at Frontend path, and npm install at ./Backend/server/ folder.
 
 This project user Firebase Auth. Please change the access credential for yours in the file enviroment.
 

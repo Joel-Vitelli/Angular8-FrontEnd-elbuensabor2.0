@@ -56,23 +56,23 @@ export class ArticuloManofacturadoComponent implements OnInit {
   }
   deleteArtManofacturado(id: string) {
     this.confirmDialogService
-      .getConfirmation("¿Esta seguro de eliminar este articulo?")
+      .getConfirmation("¿Eliminar articulo?")
       .then((confirmation: boolean) => {
         if (confirmation) {
           this.articuloService
             .deleteArticuloManofacturado(id)
             .toPromise()
             .then(() => {
-              this.snackBar.openSnackBar("Se eliminó el articulo :)");
+              this.snackBar.openSnackBar("Articulo eliminado correctamente");
             })
             .catch(err => {
               if (err && err.status === 403) {
                 this.snackBar.openSnackBar(
-                  "Este articulo se uso para un pedido. No se puede eliminar :("
+                  "Este articulo se encuentra en uso para un producto. No se puede ser eliminado"
                 );
               }
               this.snackBar.openSnackBar(
-                "Ocurrio un error al eliminar el articulo :("
+                "Error al eliminar articulo, intente nuevamente"
               );
             });
         }

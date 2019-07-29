@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span style="cursor: pointer" [routerLink]="['/']">El Buen Sabor</span>
+    <span style="cursor: pointer" [routerLink]="['/globalHome']">Restaurant - El Buen Sabor</span>
     <span *ngIf="user">
       <mat-icon
         matTooltip="Cerrar Sesion"
@@ -19,25 +19,23 @@
   </div>
   <div>
     <div class="title">
-      Pedidos de hoy :D
-      <mat-icon style="cursor: pointer" (click)="getPedidoByClient()"
-        >update</mat-icon
-      >
+      Sus pedidos del dia de hoy      
     </div>
   </div>
   <div class="pedidos-container">
     <div class="pedidos" *ngFor="let pedido of fromToday">
       <mat-card>
         <mat-card-header>
-          <mat-card-title>Pedido Nro : {{ pedido.numero }}</mat-card-title>
+          <mat-card-title>Pedido N° : {{ pedido.numero }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <p>
-            Hora estimada entrega:
+            Hora estimada de llegada:
             {{ pedido.horaEstimadaFin | date: "shortTime" }}
           </p>
-          <p>Estado de Pedido: {{ estadoPedido[pedido.estado] }}</p>
-          <p>Entrega : {{ tipoRetiro[pedido.tipoEnvio] }}</p>
+          <p>Estado de su Pedido: {{ estadoPedido[pedido.estado] }}</p>
+          <p>Forma de entrega : {{ tipoRetiro[pedido.tipoEnvio] }}</p><br><br>
+          Detalle de su pedido
           <div
             class="list-item detail-item"
             *ngFor="let detalle of pedido.detalles"
@@ -82,7 +80,7 @@
 
   <div class="olds">
     <div class="title">
-      Todos los Pedidos
+      Todos sus pedidos
     </div>
     <div class="all">
       <div class="pedidos" *ngFor="let p of getOlds()">
@@ -92,11 +90,12 @@
           </mat-card-header>
           <mat-card-content>
             <p>
-              Hora estimada entrega:
+              Hora estimada  de llegada:
               {{ p.horaEstimadaFin | date: "shortTime" }}
             </p>
-            <p>Estado de Pedido: {{ estadoPedido[p.estado] }}</p>
-            <p>Entrega : {{ tipoRetiro[p.tipoEnvio] }}</p>
+            <p>Estado de su pedido: {{ estadoPedido[p.estado] }}</p>
+            <p>Forma de entrega: {{ tipoRetiro[p.tipoEnvio] }}</p><br><br>
+            Detalle de su pedido
             <div
               class="list-item detail-item"
               *ngFor="let detalle of p.detalles"

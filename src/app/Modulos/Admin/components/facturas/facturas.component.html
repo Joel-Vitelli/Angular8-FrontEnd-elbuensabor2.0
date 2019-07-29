@@ -1,4 +1,5 @@
-<div class="container">
+<mat-card>
+<div class="container">  
   <div class="dates">
     <div>
       <mat-form-field class="date-width">
@@ -137,12 +138,12 @@
       ></tr>
       <tr mat-footer-row *matFooterRowDef="columnsToDisplay; sticky: true"></tr>
     </table>
-
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
 </div>
+</mat-card>
 <div class="export-to-excel">
   <button mat-raised-button color="primary" (click)="exportToExcel()">
-    Exportar a Excel
+    Exportar
   </button>
 </div>

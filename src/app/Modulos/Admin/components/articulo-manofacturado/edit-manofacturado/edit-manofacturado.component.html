@@ -29,7 +29,7 @@
           <input
             matInput
             type="number"
-            placeholder="Tpo Coccion(min)"
+            placeholder="Tiempo elaboración (Minutos)"
             formControlName="tiempoDeCoccion"
           />
         </mat-form-field>
@@ -37,7 +37,7 @@
     </div>
 
     <div [formGroup]="groupDetalle" class="group-detail-form">
-      <div class="title">Cargar detalles de articulo</div>
+      <div class="title">Agregar detalles del articulo</div>
       <div class="add-details">
         <div class="amount">
           <mat-form-field>
@@ -68,7 +68,7 @@
                 *ngFor="let option of filteredArt | async"
                 [value]="option"
               >
-                {{ option.denominacion }} | $ Cpra:{{ option.precioCompra }}
+                {{ option.denominacion }} - Costo &nbsp; {{ option.precioCompra | currency }}
               </mat-option>
             </mat-autocomplete>
           </mat-form-field>
@@ -90,11 +90,7 @@
           {{ detalle.articulo.denominacion }}
         </span>
         <span>
-          <mat-icon
-            style="cursor: pointer"
-            (click)="deleteDetalle(detalle.articulo._id)"
-            >cancel</mat-icon
-          >
+          <mat-icon style="cursor: pointer" (click)="deleteDetalle(detalle.articulo._id)">cancel</mat-icon>
         </span>
       </mat-list-item>
     </div>

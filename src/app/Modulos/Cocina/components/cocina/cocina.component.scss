@@ -21,3 +21,11 @@ mat-card {
   display: flex;
   flex-direction: column;
 }
+mat-raised-button{
+  background-color: greenyellow;
+}
+.center{
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
+}

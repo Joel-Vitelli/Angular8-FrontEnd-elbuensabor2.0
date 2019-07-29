@@ -57,11 +57,11 @@ export class ClienteComponent implements OnInit {
       .updateCliente(this.cliente._id, newCliente)
       .toPromise()
       .then(() => {
-        this.snackBarService.openSnackBar("Guardado!");
+        this.snackBarService.openSnackBar("Datos guardados correctamente");
       })
       .catch(() => {
         this.snackBarService.openSnackBar(
-          "Hubo un error, intentelo nuevamente!"
+          "Error al guardar datos, reintente mas tarde"
         );
       });
   }

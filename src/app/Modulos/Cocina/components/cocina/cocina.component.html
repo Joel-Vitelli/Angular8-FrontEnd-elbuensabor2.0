@@ -1,36 +1,45 @@
-<div class="container">
-  <h4 *ngIf="listPedido.length === 0">No hay pedidos</h4>
-  <div class="pedidos" *ngFor="let pedido of listPedido">
-    <mat-card>
-      <div class="title">Numero: {{ pedido.numero }}</div>
-      <mat-card-content>
-        <div class="descripcion">
-          <span
-            >Hora pedido : {{ pedido.fecha | date: "dd/MM/yy, hh:mm " }}</span
-          >
-          <span>Tipo Retiro {{ tipoRetiro[pedido.tipoEnvio] }}</span>
-          <span
-            >Hora estimada: {{ pedido.horaEstimadaFin | date: "hh:mm" }}</span
-          >
-          <div class="details">
-            <div *ngFor="let d of pedido.detalles">
-              {{ d.cantidad }} X
-              {{
-                d.onModel === "articulo"
-                  ? d.articulo.denominacion
-                  : d.articulo.nombre
-              }}
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>Restaurant - El Buen Sabor</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <span> Bienvenido/a a la cocina del restaurant </span>
+      <span>        
+        <span >
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <mat-icon matTooltip="Cerrar Sesion" aria-label="Logout" (click)="logOut()" style="cursor: pointer">logout</mat-icon>
+        </span>     
+      </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+
+  <mat-card class="center"> <h1 *ngIf="listPedido.length === 0">No hay pedidos para cocinarse</h1> </mat-card>
+  <mat-grid-list cols="4" rowHeight="500px" gutterSize="1px">
+    <mat-grid-tile *ngFor="let pedido of listPedido; let i = index">
+    <div class="pedidos" >
+      <mat-card class="center"> 
+        <div class="title">Numero: {{ pedido.numero }}</div><br>
+        <mat-card-content class="center">
+          <div class="descripcion">
+            <span>Hora del pedido : {{ pedido.fecha | date: "dd/MM/yy, hh:mm " }}</span><br>
+            <span>Forma de Retiro {{ tipoRetiro[pedido.tipoEnvio] }}</span><br>
+            <span>Hora estimada de fin: {{ pedido.horaEstimadaFin | date: "hh:mm" }}</span><br>
+            <div class="details">
+              <div *ngFor="let d of pedido.detalles">
+                {{ d.cantidad }} X
+                {{
+                  d.onModel === "articulo"
+                    ? d.articulo.denominacion
+                    : d.articulo.nombre
+                }}
+              </div>
             </div>
+            <br><button mat-raised-button color="primary" (click)="updatePedido(pedido)">Terminado</button>          
           </div>
-          <button
-            mat-button
-            color="primary"
-            (click)="updatePedido(pedido)"
-          >
-            Listo!
-          </button>          
-        </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </mat-grid-tile> 
+</mat-grid-list>
+
+

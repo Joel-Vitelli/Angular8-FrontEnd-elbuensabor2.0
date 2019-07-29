@@ -1,14 +1,16 @@
-<div class="container">
-  <h4 *ngIf="listPedido.length === 0">No hay pedidos Para facturar</h4>
-  <div class="pedidos" *ngFor="let pedido of listPedido">
+
+
+  <mat-card class="center"> <h1 *ngIf="listPedido.length === 0">Aún no hay ningún pedido que requiera ser facturado</h1></mat-card>
+  <mat-grid-list cols="4" rowHeight="400px" gutterSize="1px">
+      <mat-grid-tile *ngFor="let pedido of listPedido">  
     <mat-card>
       <div class="title">Numero: {{ pedido.numero }}</div>
       <mat-card-content>
         <div class="descripcion">
           <span
-            >Hora pedido : {{ pedido.fecha | date: "dd/MM/yy, hh:mm " }}</span
+            >Hora del pedido : {{ pedido.fecha | date: "dd/MM/yy, hh:mm " }}</span
           >
-          <span>Tipo Retiro {{ tipoRetiro[pedido.tipoEnvio] }}</span>
+          <span>Forma de Retiro {{ tipoRetiro[pedido.tipoEnvio] }}</span>
           <span
             >Hora estimada: {{ pedido.horaEstimadaFin | date: "hh:mm" }}</span
           >
@@ -36,16 +38,12 @@
               <div>Total</div>
               <div>${{ getTotal(pedido.detalles) | number: "0.2" }}</div>
             </div>
-          </div>
-          <button
-            mat-button
-            color="primary"
-            (click)="createFacturaFromPedido(pedido)"
-          >
-            ¡Generar factura!
-          </button>
+          </div><br>
+          <button mat-raised-button color="primary" (click)="createFacturaFromPedido(pedido)"> Facturar</button>
         </div>
       </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+    </mat-card>  
+</mat-grid-tile> 
+</mat-grid-list>
+ 
+

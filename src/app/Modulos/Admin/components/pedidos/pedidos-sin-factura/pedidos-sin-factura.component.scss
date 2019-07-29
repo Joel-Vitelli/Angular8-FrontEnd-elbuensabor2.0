@@ -10,9 +10,7 @@
   width: 250px;
   padding: 10px;
 }
-mat-card {
-  padding: 3px;
-}
+
 
 .descripcion {
   display: flex;
@@ -31,4 +29,10 @@ mat-card {
   flex-direction: row;
   justify-content: space-around;
   padding-top: 6px;
+}
+
+.center{
+  margin: 0 auto;
+  justify-content: center;
+  text-align: center;
 }

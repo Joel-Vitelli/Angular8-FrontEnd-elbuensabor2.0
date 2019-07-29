@@ -24,7 +24,7 @@ export class AdminComponent implements OnInit {
         this.userService.getPermissionsByUser(u.email).then(array => {
           if (!array.includes("admin")) {
             this.snackBarService.openSnackBar(
-              "No tiene permiso para acceder a esta sector :(,"
+              "Necesita permisos de administrador para ingresar a esta zona"
             );
             this.auth.signOut();
             this.router.navigate(["/login"]);

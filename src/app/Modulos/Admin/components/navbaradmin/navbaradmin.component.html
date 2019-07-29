@@ -1,37 +1,30 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
+      <span>Administración</span>
     <button mat-icon-button [matMenuTriggerFor]="menu">
       <mat-icon>menu</mat-icon>
     </button>
     <span class="toobar-spacer"></span>
-    <mat-icon
-      class="material-icon"
-      aria-hidden="false"
-      matTooltip="Cerrar Sesion"
-      style="cursor: pointer"
-      (click)="signOut()"
-      >logout</mat-icon
-    >
+    <mat-icon class="material-icon" aria-hidden="false" matTooltip="Cerrar Sesion" style="cursor: pointer" (click)="signOut()">logout</mat-icon>
   </mat-toolbar-row>
 </mat-toolbar>
 
 <mat-menu #menu="matMenu">
-  <button mat-menu-item [matMenuTriggerFor]="articulos">Articulos</button>
+  
   <button mat-menu-item [routerLink]="['/admin/users']">
-    Users
+    Usuarios internos
   </button>
   <button mat-menu-item [routerLink]="['/admin/rubro']">
     Administrar Rubros
   </button>
   <button mat-menu-item [routerLink]="['/admin/horario']">
-    Horario de apertura
-  </button>
-  <button mat-menu-item [matMenuTriggerFor]="pedidos">Pedidos</button>
+    Administrar horarios
+  </button>  
   <button mat-menu-item [routerLink]="['/admin/facturas']">
-    Facturas
+    Ver Facturas
   </button>
   <button mat-menu-item [routerLink]="['/admin/totalsales']">
-    Artículos más vendidos
+    Historial de ventas
   </button>
   <button mat-menu-item [routerLink]="['/admin/clientes']">
     Clientes
@@ -39,15 +32,11 @@
   <button mat-menu-item [routerLink]="['/cocina']">
     Cocina
   </button>
-</mat-menu>
-
-<mat-menu #articulos="matMenu">
+  
   <button mat-menu-item [routerLink]="['/admin/articulo']">Articulos</button>
   <button mat-menu-item [routerLink]="['/admin/manofacturado']">
     Productos manofacturados
   </button>
-</mat-menu>
-<mat-menu #pedidos="matMenu">
   <button mat-menu-item [routerLink]="['/admin/pedidosxfacturar']">
     Pedidos para facturar
   </button>
@@ -55,3 +44,8 @@
     Pedidos
   </button>
 </mat-menu>
+
+
+
+
+

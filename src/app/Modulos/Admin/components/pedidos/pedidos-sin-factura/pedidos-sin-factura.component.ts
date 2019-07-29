@@ -52,7 +52,7 @@ export class PedidosSinFacturaComponent implements OnInit {
 
   createFacturaFromPedido(pedido: Pedido) {
     this.confirmDialog
-      .getConfirmation("Facturar el pedido numero :" + pedido.numero + " ?")
+      .getConfirmation("¿Facturar pedido N° " + pedido.numero + " ?")
       .then((confirmation: boolean) => {
         if (confirmation) {
           this.pedidoService
@@ -61,7 +61,7 @@ export class PedidosSinFacturaComponent implements OnInit {
             .then(() => this.addFactura(pedido))
             .catch(() => {
               this.snackBarService.openSnackBar(
-                "Ocurrio un error, intentelo nuevamente"
+                "Error, reintente mas tarde"
               );
             });
         }
@@ -88,12 +88,12 @@ export class PedidosSinFacturaComponent implements OnInit {
       .toPromise()
       .then(f => {
         this.snackBarService.openSnackBar(
-          "Se creo factura con el número: " + f.numero
+          "Factura N° " + f.numero + " creada correctamente"
         );
       })
       .catch(() => {
         this.snackBarService.openSnackBar(
-          "Ocurrio un error al crear la factura: "
+          "Error al crear factura, reintente mas tarde"
         );
       });
   }

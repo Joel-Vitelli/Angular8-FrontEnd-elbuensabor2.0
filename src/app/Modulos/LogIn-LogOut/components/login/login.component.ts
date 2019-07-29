@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           .then(array => {
             if (!array || array.length === 0) {
               this.snackBar.openSnackBar(
-                "No tienes permisos para acceder al administrador. Pídelos"
+                "Necesita permisos de administrador"
               );
               this.router.navigate(["/"]);
             } else {

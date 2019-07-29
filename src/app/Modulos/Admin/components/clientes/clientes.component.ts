@@ -43,6 +43,7 @@ export class ClientesComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+    this.getClientes();
   }
 
   async getClientes() {
@@ -62,14 +63,14 @@ export class ClientesComponent implements OnInit {
 
   deleteCliente(id: string, name: string) {
     this.confirmService
-      .getConfirmation("Eliminar el cliente " + name + "?")
+      .getConfirmation("¿Desea eliminar a " + name + "?")
       .then((c: boolean) => {
         if (c) {
           this.clienteService
             .deleteCliente(id)
             .toPromise()
             .then(() => {
-              this.snackBarService.openSnackBar("Elimindado!");
+              this.snackBarService.openSnackBar("Cliente " + name + " eliminado correctamente");
             });
         }
       });

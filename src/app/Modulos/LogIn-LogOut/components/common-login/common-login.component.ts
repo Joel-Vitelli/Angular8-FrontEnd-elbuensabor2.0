@@ -73,7 +73,7 @@ export class CommonLoginComponent implements OnInit {
       .then(u => {
         if (u) {
           this.snackBarService.openSnackBar(
-            "Bienvenido  " + u.displayName
+            "Bienvenido/a  " + u.displayName
           );
           this.router.navigate(["globalHome"]);
           this.dialogRef.close({ type: "signIn" });
@@ -117,7 +117,7 @@ export class CommonLoginComponent implements OnInit {
       })
       .catch(() => {
         this.snackBarService.openSnackBar(
-          "Hubo un error al crear el perfil. Actualice sus datos en el perfil"
+          "Hubo un error al crear el perfil. Por favor, actualize sus datos"
         );
       });
   }

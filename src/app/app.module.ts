@@ -77,8 +77,8 @@ import { LogInComponent } from "./Modulos/LogIn-LogOut/components/log-in/log-in.
     UsersComponent,
     ListUserComponent,
     ParticlesComponent,
-    LogInComponent
-],
+    LogInComponent,
+  ],
   entryComponents: [
     ArticuloDialogComponent,
     SnackBarComponent,

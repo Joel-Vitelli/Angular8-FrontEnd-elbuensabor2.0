@@ -73,7 +73,7 @@ export class EditManofacturadoComponent implements OnInit {
 
   private _filter(value: any): Articulo[] {
     if (!value) {
-      console.log("No hay valor");
+      console.log("Valor nulo");
       return this.listArticulos;
     }
     if (value.hasOwnProperty("_id")) {
@@ -130,14 +130,14 @@ export class EditManofacturadoComponent implements OnInit {
         .addArticuloManofacturado(manofacturado)
         .toPromise()
         .then(() => {
-          this.snackBar.openSnackBar("Se agregó el articulo! :)");
+          this.snackBar.openSnackBar("Articulo agregado satisfactoriamente");
           this.form.reset();
           this.detalleArticulos = [];
         })
         .catch(err => {
           console.log(err);
           this.snackBar.openSnackBar(
-            "¡Se produjo un error al agregar el articulo! :( "
+            "Falla al agregar articulo, intente nuevamente"
           );
         });
     } else {
@@ -148,7 +148,7 @@ export class EditManofacturadoComponent implements OnInit {
         )
         .toPromise()
         .then(() => {
-          this.snackBar.openSnackBar("Actualizado!");
+          this.snackBar.openSnackBar("Actualizado");
         });
     }
   }

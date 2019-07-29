@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
 }
 
 .item {
@@ -11,17 +12,20 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 0 auto;
 }
 
 .cant {
   width: 75px;
   padding-right: 10px;
   text-align: center;
+  margin: 0 auto;
 }
 
 .description {
   display: flex;
   justify-content: center;
+  
 }
 
 .export-to-excel {

@@ -1,5 +1,9 @@
-<div class="container">
+
+
+  <div class="container">
+  <mat-card>
   <div class="dates">
+    
     <div>
       <mat-form-field class="date-width">
         <input
@@ -33,7 +37,9 @@
       </mat-form-field>
     </div>
     <button mat-button (click)="getClientes()">Buscar</button>
+    
   </div>
+  
   <div class="table-container mat-elevation-z8">
     <table
       mat-table
@@ -55,7 +61,7 @@
         </td>
       </ng-container>
       <ng-container matColumnDef="telefono">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>telefono</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Celular</th>
         <td mat-cell *matCellDef="let element">
           {{ element.telefono }}
         </td>
@@ -63,16 +69,7 @@
       <ng-container matColumnDef="creacion">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Desde</th>
         <td mat-cell *matCellDef="let element">
-          <mat-icon
-            style="cursor: pointer"
-            (click)="
-              deleteCliente(
-                element._id,
-                element.nombre + ' ' + element.apellido
-              )
-            "
-            >delete</mat-icon
-          >
+          <mat-icon style="cursor: pointer" (click)="deleteCliente(element._id, element.nombre + ' ' + element.apellido)">delete</mat-icon>
         </td>
       </ng-container>
       <ng-container matColumnDef="delete">
@@ -130,10 +127,13 @@
 
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
+</mat-card>
 </div>
 
 <div class="export-to-excel">
   <button mat-raised-button color="primary" (click)="exportToExcel()">
-    Exportar a Excel
+    Exportar
   </button>
+
 </div>
+

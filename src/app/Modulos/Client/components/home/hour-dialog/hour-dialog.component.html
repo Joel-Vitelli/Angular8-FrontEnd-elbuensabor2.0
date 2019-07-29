@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>
   Termina tu pedido<br />
-  A que hora venis?
+  Hora de retiro
 </h1>
 <div mat-dialog-content [formGroup]="form">
-  Hoy abrimos: {{ displayOpenTime }} <br />
-  Cerramos: {{ displayCloseTime }} <br />
+  El local abre: {{ displayOpenTime }} <br />
+  El local cierra: {{ displayCloseTime }} <br />
   <mat-form-field>
     <input matInput placeholder="Hora retiro HH:MM" formControlName="horario" />
   </mat-form-field>

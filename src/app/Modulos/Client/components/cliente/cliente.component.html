@@ -2,7 +2,7 @@
   <mat-expansion-panel>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Mis datos personales
+        Datos personales
       </mat-panel-title>
       <mat-panel-description>
         {{ cliente ? cliente.email : "--" }}
@@ -34,7 +34,7 @@
         <mat-form-field>
           <input
             matInput
-            placeholder="Telefono"
+            placeholder="Celular"
             formControlName="telefonoControl"
             type="number"
           />
@@ -49,7 +49,7 @@
             formControlName="calleControl"
             type="text"
           />
-          <mat-hint align="end">Opcional</mat-hint>
+          
         </mat-form-field>
 
         <mat-form-field>
@@ -59,7 +59,7 @@
             formControlName="numeroControl"
             type="text"
           />
-          <mat-hint align="end">Opcional</mat-hint>
+          
         </mat-form-field>
         <div class="localidad">
           <mat-form-field>
@@ -69,7 +69,7 @@
               formControlName="localidadControl"
               type="text"
             />
-            <mat-hint align="end">Opcional</mat-hint>
+            
           </mat-form-field>
         </div>
       </div>
@@ -79,7 +79,7 @@
           *ngIf="clientFormGroup.valid"
           (click)="onSaveClick()"
         >
-          Guardar datos!
+          Guardar
         </button>
       </div>
     </form>

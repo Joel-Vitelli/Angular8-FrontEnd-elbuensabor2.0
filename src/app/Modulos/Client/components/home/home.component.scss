@@ -6,7 +6,10 @@
   width: 100%;
 }
 .select-articulos {
-  width: 60%;
+  width: 100%;
+}
+.listIngredient{
+  color: black;
 }
 
 .products {
@@ -18,14 +21,17 @@
   justify-content: flex-start;
   align-items: center;
   overflow: auto;
+  
 }
 .card {
   padding-left: 15px;
+  
 }
 .cardCol {
-  background-color: #f4f5f7d9;
+  background-color: white;
   width: 220px;
   text-align: center;
+  color: black;
 }
 
 form {
@@ -36,6 +42,9 @@ mat-form-field {
   width: 90%;
   max-width: 350px;
   padding-left: 15px;
+}
+mat-card-header{
+  align-content: center;
 }
 
 //pedido
@@ -59,17 +68,20 @@ mat-form-field {
   display: flex;
   flex-direction: column;
   align-content: center;
+  color: black;
 }
 
 .product-header {
   font-size: 1.1rem;
   padding-left: 5px;
   font-weight: bold;
+  color: white;
 }
 
 .amount-header {
   font-size: 1.1rem;
   font-weight: bold;
+  color: white;
 }
 .list-item {
   display: flex;
@@ -85,20 +97,33 @@ mat-form-field {
 }
 .description {
   display: flex;
+  color: greenyellow;  
 }
 
 .btn-finish {
   padding-top: 15px;
+  
 }
 
 .description-total {
   font-weight: bold;
   font-size: 16px;
   padding-left: 5px;
+  color: white;
+  
+}
+.centrar{
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 19px;
+  
+  /* IMPORTANTE */
+  text-align: center;
 }
 
 .detail-item {
   height: 36px;
+  
 }
 
 .discount {
@@ -126,6 +151,7 @@ mat-form-field {
     justify-content: flex-start;
     align-items: center;
     overflow: auto;
+
   }
   .card {
     padding-left: 15px;
@@ -217,4 +243,11 @@ mat-form-field {
   font-size: 25px;
   padding-left: 2rem;
   color: white;
+}
+.buttonCenter{
+  
+  padding-right: 10px;
+  
+  /* IMPORTANTE */
+  text-align: center;
 }

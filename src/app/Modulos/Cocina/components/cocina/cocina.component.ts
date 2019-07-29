@@ -36,7 +36,7 @@ export class CocinaComponent implements OnInit {
         this.userService.getPermissionsByUser(u.email).then(array => {
           if (array.length === 0 || !array.includes("cocina")) {
             this.snackBarService.openSnackBar(
-              "No tiene permiso para acceder a esta parte del sitio :(."
+              "No tiene permisos para acceder a esta zona"
             );
             this.auth.signOut();
             this.router.navigate(["/login"]);
@@ -71,7 +71,7 @@ export class CocinaComponent implements OnInit {
   updatePedido(pedido: Pedido) {
     this.confirmDialog
       .getConfirmation(
-        "Enviar a facturar el pedido numero :" + pedido.numero + " ?"
+        "¿Enviar pedido N° " + pedido.numero + " a facturación?"
       )
       .then((confirmation: boolean) => {
         if (confirmation) {
@@ -109,7 +109,10 @@ export class CocinaComponent implements OnInit {
       .decreaseStock(list)
       .toPromise()
       .then(() => {
-        console.log("Stock actualizado");
+        console.log("Actualizado");
       });
+  }
+  logOut() {
+    this.auth.signOut();
   }
 }

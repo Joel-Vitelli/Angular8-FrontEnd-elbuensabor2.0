@@ -62,6 +62,7 @@ export class ClientesComponent implements OnInit {
   }
 
   deleteCliente(id: string, name: string) {
+    console.log(id);
     this.confirmService
       .getConfirmation("¿Desea eliminar a " + name + "?")
       .then((c: boolean) => {
@@ -71,6 +72,7 @@ export class ClientesComponent implements OnInit {
             .toPromise()
             .then(() => {
               this.snackBarService.openSnackBar("Cliente " + name + " eliminado correctamente");
+              this.getClientes();
             });
         }
       });

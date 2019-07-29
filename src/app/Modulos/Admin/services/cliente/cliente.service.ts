@@ -35,6 +35,6 @@ export class ClienteService {
   }
 
   deleteCliente(id: string) {
-    return this.httpService.get(routeCliente + id);
+    return this.httpService.delete(routeCliente + id);
   }
 }

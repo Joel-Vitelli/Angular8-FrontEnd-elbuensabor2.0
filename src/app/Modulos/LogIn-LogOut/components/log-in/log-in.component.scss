@@ -2,7 +2,7 @@
 .card{
     flex-flow: row wrap;
     width: 40%;
-    height: 45%;
+    height: 60%;
     margin: 10px auto;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@
   }
   
   .card-content {
-    height: 30vh;
+    height: 40vh;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -1,51 +1,24 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-      <span>Administración</span>
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>menu</mat-icon>
-    </button>
+      <span>Administración</span>    
+    <span class="toobar-spacer"></span>
+    <span>Restaurante - El Buen Sabor</span>
     <span class="toobar-spacer"></span>
     <mat-icon class="material-icon" aria-hidden="false" matTooltip="Cerrar Sesion" style="cursor: pointer" (click)="signOut()">logout</mat-icon>
   </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-raised-button [routerLink]="['/admin/articulo']">Articulo</button> &nbsp;
+    <button mat-raised-button [routerLink]="['/admin/manofacturado']">Productos manufacturados</button> &nbsp;
+    <button mat-raised-button [routerLink]="['/admin/users']">Usuarios</button> &nbsp;
+    <button mat-raised-button [routerLink]="['/admin/clientes']">Clientes</button> &nbsp;
+    <button mat-raised-button [routerLink]="['/admin/rubro']">Rubros</button> &nbsp;
+    <button mat-raised-button [routerLink]="['/admin/horario']">Horarios</button> &nbsp;
+    <button mat-raised-button [routerLink]="['/admin/facturas']">Ver Facturas</button> &nbsp;    
+    <button mat-raised-button [routerLink]="['/admin/pedidos']">Pedidos</button> &nbsp;
+    <button mat-raised-button [routerLink]="['/admin/pedidosxfacturar']">Pedidos por facturar</button> &nbsp;
+    <button mat-raised-button [routerLink]="['/admin/totalsales']">Productos mas Vendidos</button> &nbsp;
+    <button mat-raised-button [routerLink]="['/cocina']">Cocina</button> &nbsp;
+  </mat-toolbar-row>
 </mat-toolbar>
-
-<mat-menu #menu="matMenu">
-  
-  <button mat-menu-item [routerLink]="['/admin/users']">
-    Usuarios internos
-  </button>
-  <button mat-menu-item [routerLink]="['/admin/rubro']">
-    Administrar Rubros
-  </button>
-  <button mat-menu-item [routerLink]="['/admin/horario']">
-    Administrar horarios
-  </button>  
-  <button mat-menu-item [routerLink]="['/admin/facturas']">
-    Ver Facturas
-  </button>
-  <button mat-menu-item [routerLink]="['/admin/totalsales']">
-    Historial de ventas
-  </button>
-  <button mat-menu-item [routerLink]="['/admin/clientes']">
-    Clientes
-  </button>
-  <button mat-menu-item [routerLink]="['/cocina']">
-    Cocina
-  </button>
-  
-  <button mat-menu-item [routerLink]="['/admin/articulo']">Articulos</button>
-  <button mat-menu-item [routerLink]="['/admin/manofacturado']">
-    Productos manofacturados
-  </button>
-  <button mat-menu-item [routerLink]="['/admin/pedidosxfacturar']">
-    Pedidos para facturar
-  </button>
-  <button mat-menu-item [routerLink]="['/admin/pedidos']">
-    Pedidos
-  </button>
-</mat-menu>
-
-
-
 
 
